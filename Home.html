@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F6F7;
+            color: #333;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .leaderboard a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #4A90E2;
+            color: #FFFFFF;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .leaderboard a:hover {
+            background-color: #3D7ABD;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            margin-right: 15px;
+        }
+        .profile span {
+            font-size: 18px;
+        }
+        .profile a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .welcome {
+            text-align: center;
+            font-size: 28px;
+            margin: 40px 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .quiz-section, .rules-section, .grid, .contact-us {
+            margin: 40px 0;
+        }
+        .quiz-section, .rules-section {
+            padding: 30px;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .quiz-section h2, .rules-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .quiz-section button {
+            font-size: 18px;
+            padding: 12px 25px;
+            background-color: #4A90E2;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .quiz-section button:hover {
+            background-color: #3D7ABD;
+        }
+
+       
+        .rules-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .rules-section li {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #555;
+        }
+        .rules-section .medals {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .rules-section .medal {
+            margin: 0 15px;
+            text-align: center;
+        }
+        .rules-section .medal-img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+        .rules-section .medal-caption {
+            font-size: 16px;
+            color: #333;
+        }
+
+       
+        .grid {
+            display: flex;
+            justify-content: space-between;
+        }
+        .grid-item {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .section-image {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto 15px;
+            border-radius: 8px;
+        }
+
+       
+        .contact-us {
+            padding: 20px;
+            background-color: #333;
+            color: #FFFFFF;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .contact-us a {
+            color: #4A90E2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-us a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="leaderboard">
+            <a href="Leaderboard.html">Leaderboard</a>
+        </div>
+
+        <div class="profile">
+            <img src="ProfileImage.jpg" alt="Profile Photo">
+            <span><a href="Profile.html">TestDummy</a></span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="welcome">
+            <h1>Welcome to Civic Insights</h1>
+        </div>
+
+        <div class="quiz-section">
+            <h2>Start Your Quiz</h2>
+            <p>Take the quiz and test your knowledge!</p>
+            <a href="Quiz_1.html"><button>Start Quiz</button></a>
+        </div>
+
+        <div class="rules-section">
+            <h3>Quiz Rules & Medals</h3>
+            <ul>
+                <li>Diamond: 5 points for 4 correct answers</li>
+                <li>Gold: 3 points for 3 correct answers</li>
+                <li>Silver: 2 points for 2 correct answers</li>
+                <li>Bronze: 1 point for 1 correct answer</li>
+            </ul>
+            <div class="medals">
+                <div class="medal">
+                    <img src="diamond.png" alt="Diamond Medal" class="medal-img">
+                    <div class="medal-caption">Diamond Medal</div>
+                </div>
+                <div class="medal">
+                    <img src="gold.png" alt="Gold Medal" class="medal-img">
+                    <div class="medal-caption">Gold Medal</div>
+                </div>
+                <div class="medal">
+                    <img src="silver.png" alt="Silver Medal" class="medal-img">
+                    <div class="medal-caption">Silver Medal</div>
+                </div>
+                <div class="medal">
+                    <img src="bronze.png" alt="Bronze Medal" class="medal-img">
+                    <div class="medal-caption">Bronze Medal</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="grid-item">
+                <img src="ArticlesImage.jpeg" alt="Articles Image" class="section-image">
+                <h3><a href="Article Repo.html">Articles</a></h3>
+            </div>
+            <div class="grid-item">
+                <img src="CourseImage.jpeg" alt="Courses Image" class="section-image">
+                <h3><a href="Course Repo.html">Courses</a></h3>
+            </div>
+        </div>
+
+        <div class="contact-us">
+            <h3><a href="About Us.html">Contact Us</a></h3>
+        </div>
+    </div>
+</body>
+</html>

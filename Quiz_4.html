@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F7F9FA; 
+            color: #333333;
+        }
+        .quiz-container {
+            background-color: #FFFFFF; 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            border: 1px solid #E0E0E0; 
+        }
+        .question {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .question.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .question p {
+            font-size: 22px;
+            color: #2C3E50;
+            margin-bottom: 25px;
+        }
+        .quiz-options label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+            cursor: pointer;
+            background-color: #E0E0E0;
+            color: #333333;
+            border-radius: 8px;
+            padding: 12px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .quiz-options label:hover {
+            background-color: #3498DB; 
+            color: #FFFFFF;
+            transform: translateY(-2px); 
+        }
+        .quiz-options input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #2C3E50;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #1B2938; 
+            transform: translateY(-2px); 
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #2C3E50;
+        }
+        #nextBtn, .resetBtn {
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
+        .feedback {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .feedback.correct {
+            color: #27AE60; 
+            border: 1px solid #27AE60;
+        }
+        .feedback.incorrect {
+            color: #E74C3C; 
+            border: 1px solid #E74C3C;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="quiz">
+            <div class="question active" id="question1">
+                <p>4. What does the word "Sovereign" in the Preamble mean?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> India is free and can make its own laws</label>
+                    <label><input type="radio" name="q1" value="b"> India is ruled by a king</label>
+                    <label><input type="radio" name="q1" value="c"> India is under another country</label>
+                    <label><input type="radio" name="q1" value="d"> None of the above</label>
+                </div>
+                <p id="feedback1" class="feedback" aria-live="polite"></p>
+                <button class="btn" id="nextBtn" onclick="nextQuestion()">Finish</button>
+            </div>
+
+            <div class="question hidden" id="question2">
+                <p>What does the word "Secular" in the Preamble mean?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> India has no official religion</label>
+                    <label><input type="radio" name="q2" value="b"> India only supports Hinduism</label>
+                    <label><input type="radio" name="q2" value="c"> India is ruled by religious leaders</label>
+                    <label><input type="radio" name="q2" value="d"> None of the above</label>
+                </div>
+                <p id="feedback2" class="feedback" aria-live="polite"></p>
+                <button class="btn" onclick="checkAnswers()">Submit</button>
+                <button class="btn resetBtn" onclick="resetQuiz()">Finish</button>
+            </div>
+
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+
+        function showFeedback(elementId, isCorrect) {
+            const feedback = document.getElementById(elementId);
+            if (isCorrect) {
+                feedback.textContent = "Correct!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = "Incorrect.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        document.querySelectorAll('input[name="q1"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const isCorrect = input.value === 'a';
+                showFeedback('feedback1', isCorrect);
+                document.getElementById('nextBtn').style.display = 'inline-block';
+            });
+        });
+
+        function nextQuestion() {
+            window.location.href = 'Home.html';
+        }
+
+        document.querySelectorAll('input[name="q2"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const isCorrect = input.value === 'a';
+                showFeedback('feedback2', isCorrect);
+            });
+        });
+
+        function checkAnswers() {
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            if (!q2) {
+                alert('Please answer the second question.');
+                return;
+            }
+
+            let result = "You've completed the quiz!";
+            document.getElementById('result').textContent = result;
+            document.querySelector('.resetBtn').style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            document.getElementById('question1').classList.remove('hidden');
+            document.getElementById('question2').classList.add('hidden');
+            document.getElementById('feedback1').textContent = '';
+            document.getElementById('feedback2').textContent = '';
+            document.getElementById('result').textContent = '';
+            document.querySelectorAll('input[name="q1"]').forEach(input => input.checked = false);
+            document.querySelectorAll('input[name="q2"]').forEach(input => input.checked = false);
+            document.getElementById('nextBtn').style.display = 'none';
+            document.querySelector('.resetBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
